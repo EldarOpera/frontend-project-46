@@ -1,0 +1,20 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Gendiff utility",
+  "main": "index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eldar Akhmedov",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "commander": "^10.0.0",
+    "eslint": "^8.35.0",
+    "make": "^0.8.1"
+  }
+}
