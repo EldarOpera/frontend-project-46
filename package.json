@@ -15,6 +15,9 @@
   "dependencies": {
     "commander": "^10.0.0",
     "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "lodash": "^4.17.21",
     "make": "^0.8.1"
   }
 }
