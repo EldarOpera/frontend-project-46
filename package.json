@@ -7,11 +7,19 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EldarOpera/frontend-project-46.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EldarOpera/frontend-project-46/issues"
   },
   "author": "Eldar Akhmedov",
   "license": "ISC",
   "type": "module",
+  "homepage": "https://github.com/EldarOpera/frontend-project-46#readme",
   "dependencies": {
     "commander": "^10.0.0",
     "eslint": "^8.35.0",
