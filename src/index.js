@@ -26,7 +26,7 @@ const genDiff = (path1, path2) => {
     }
   }
 
-  return `${res}\n}`;
+  return `${res}\n}\n`;
 };
 
 export default genDiff;
