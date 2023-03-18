@@ -1,10 +1,13 @@
-import { readFileSync } from 'fs';
-import path from 'path';
+import parse from './parsers.js';
+import { getPath } from './helpers.js';
 import _ from 'lodash';
 
 const genDiff = (path1, path2) => {
-  const obj1 = JSON.parse(readFileSync(path.resolve(path1)));
-  const obj2 = JSON.parse(readFileSync(path.resolve(path2)));
+  const absPath1 = getPath(path1);
+  const absPath2 = getPath(path2);
+  const obj1 = parse(absPath1);
+  const obj2 = parse(absPath2);
+
   const keys = _.union(_.keys(obj1), _.keys(obj2)).sort();
   let res = '{';
 

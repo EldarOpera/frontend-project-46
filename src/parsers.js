@@ -1,9 +1,8 @@
-import path from 'path';
 import yaml from 'js-yaml';
-import { readFile } from './helpers.js';
+import { readFile, getExtension } from './helpers.js';
 
 const parse = (filepath) => {
-  const extension = path.extname(filepath);
+  const extension = getExtension(filepath);
   let parseFn;
 
   switch (extension) {
@@ -11,10 +10,10 @@ const parse = (filepath) => {
       parseFn = JSON.parse;
       break;
     case '.yml':
-      parseFn = yaml.safeLoad;
+      parseFn = yaml.safe;
       break;
     case '.yaml':
-      parseFn = yaml.safeLoad;
+      parseFn = yaml.safe;
       break;
     default:
       return `Unknown extension: ${extension}`;
