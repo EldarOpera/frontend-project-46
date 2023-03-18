@@ -19,5 +19,5 @@ test('flat .yml test', () => {
   const filepath2 = getPath(__dirname, '../__fixtures__', 'flat_file2.yml');
   const expectedYML = readFile(getPath(__dirname, '../__fixtures__', 'flat_expected.txt'));
 
-  expect(genDiff(filepath1, filepath2)).toEqual(expectedYML)
+  expect(genDiff(filepath1, filepath2)).toEqual(expectedYML);
 });

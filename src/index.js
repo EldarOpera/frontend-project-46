@@ -1,6 +1,6 @@
+import _ from 'lodash';
 import parse from './parsers.js';
 import { getPath } from './helpers.js';
-import _ from 'lodash';
 
 const genDiff = (path1, path2) => {
   const absPath1 = getPath(path1);
