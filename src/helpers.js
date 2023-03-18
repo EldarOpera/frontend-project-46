@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 
 const getPath = (...filepath) => path.resolve(filepath.join('/'));
 
-const getDir = (filepath) => path.dir(filepath);
+const getDir = (filepath) => path.dirname(filepath);
 
 const getExtension = (filepath) => path.extname(filepath);
 
