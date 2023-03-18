@@ -3,8 +3,8 @@ import { fileURLToPath } from 'url';
 import { getPath, getDir, readFile } from '../src/helpers.js';
 import genDiff from '../src/index.js';
 
-const __filename = fileURLToPath(import.meta.url); // /home/runner/work/frontend-project-46/__tests__/index.test.js
-const __dirname = getDir(__filename); // /home/runner/work/frontend-project-46/__tests__
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = getDir(__filename);
 
 test('flat .json test', () => {
   const filepath1 = getPath(__dirname, '../__fixtures__', 'flat1.json');
