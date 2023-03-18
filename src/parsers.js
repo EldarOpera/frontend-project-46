@@ -10,10 +10,10 @@ const parse = (filepath) => {
       parseFn = JSON.parse;
       break;
     case '.yml':
-      parseFn = yaml.safe;
+      parseFn = yaml.load;
       break;
     case '.yaml':
-      parseFn = yaml.safe;
+      parseFn = yaml.load;
       break;
     default:
       return `Unknown extension: ${extension}`;
