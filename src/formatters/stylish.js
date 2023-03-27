@@ -16,7 +16,7 @@ const stringify = (data, depth) => {
   return ['{', ...lines, `${getBracketIndent(depth)}}`].join('\n');
 };
 
-const stylish = (diffTree) => {
+const formatStylish = (diffTree) => {
   const iter = (data, depth) => {
     const lines = data.map((node) => {
       const {
@@ -45,4 +45,4 @@ const stylish = (diffTree) => {
   return iter(diffTree, 1);
 };
 
-export default stylish;
+export default formatStylish;
