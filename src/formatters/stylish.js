@@ -19,8 +19,8 @@ const stringify = (data, depth) => {
 const stylish = (diffTree) => {
   const iter = (data, depth) => {
     const lines = data.map((node) => {
-      const { 
-        key, type, value, oldValue, newValue, children 
+      const {
+        key, type, value, oldValue, newValue, children,
       } = node;
 
       switch (type) {

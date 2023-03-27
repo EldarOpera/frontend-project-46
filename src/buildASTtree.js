@@ -22,8 +22,8 @@ const buildASTtree = (obj1, obj2) => {
     }
     // если значение изменилось
     if (value1 !== value2) {
-      return { 
-        key, type: 'changed', oldValue: value1, newValue: value2 
+      return {
+        key, type: 'changed', oldValue: value1, newValue: value2,
       };
     }
 
