@@ -3,24 +3,18 @@ import { readFile, getExtension } from './helpers.js';
 
 const parse = (filepath) => {
   const extension = getExtension(filepath);
-  let parseFn;
+  const data = readFile(filepath);
 
   switch (extension) {
     case '.json':
-      parseFn = JSON.parse;
-      break;
+      return JSON.parse(data);
     case '.yml':
-      parseFn = yaml.load;
-      break;
+      return yaml.load(data);
     case '.yaml':
-      parseFn = yaml.load;
-      break;
+      return yaml.load(data);
     default:
-      return `Unknown extension: ${extension}`;
+      throw new Error(`Unknown extension: ${extension}`);
   }
-
-  const data = readFile(filepath);
-  return parseFn(data);
 };
 
 export default parse;
