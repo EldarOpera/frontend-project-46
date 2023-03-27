@@ -1,4 +1,4 @@
-import stylish from './stylish.js'
+import stylish from './stylish.js';
 
 const makeFormat = (diffTree, format) => {
   switch (format) {
@@ -8,3 +8,5 @@ const makeFormat = (diffTree, format) => {
       throw new Error(`Unknown format: ${format}`);
   }
 };
+
+export default makeFormat;

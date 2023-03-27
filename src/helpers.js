@@ -13,5 +13,5 @@ export {
   getPath,
   getDir,
   readFile,
-  getExtension
+  getExtension,
 };

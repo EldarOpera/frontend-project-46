@@ -1,7 +1,6 @@
-import _ from 'lodash';
 import parse from './parsers.js';
-import buildASTtree from './buildASTtree.js'
-import makeFormat from './formatters/makeFormat.js'
+import buildASTtree from './buildASTtree.js';
+import makeFormat from './formatters/makeFormat.js';
 import { getPath } from './helpers.js';
 
 const genDiff = (path1, path2, format = 'stylish') => {
@@ -11,7 +10,7 @@ const genDiff = (path1, path2, format = 'stylish') => {
   const obj2 = parse(absPath2);
   const diffTree = buildASTtree(obj1, obj2);
 
-  return format(diffTree, format);
+  return makeFormat(diffTree, format);
 };
 
 export default genDiff;

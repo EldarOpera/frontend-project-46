@@ -19,7 +19,9 @@ const stringify = (data, depth) => {
 const stylish = (diffTree) => {
   const iter = (data, depth) => {
     const lines = data.map((node) => {
-      const { key, type, value, oldValue, newValue, children } = node;
+      const { 
+        key, type, value, oldValue, newValue, children 
+      } = node;
 
       switch (type) {
         case 'nested':
@@ -29,9 +31,7 @@ const stylish = (diffTree) => {
         case 'deleted':
           return `${getIndent(depth)}- ${key}: ${stringify(value, depth + 1)}`;
         case 'changed':
-          const old = `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth + 1)}`;
-          const cur = `${getIndent(depth)}+ ${key}: ${stringify(newValue, depth + 1)}`;
-          return `${old}\n${cur}`;
+          return `${getIndent(depth)}- ${key}: ${stringify(oldValue, depth + 1)}\n${getIndent(depth)}+ ${key}: ${stringify(newValue, depth + 1)}`;
         case 'unchanged':
           return `${getIndent(depth)}  ${key}: ${stringify(value, depth + 1)}`;
         default:
