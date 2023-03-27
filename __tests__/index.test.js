@@ -22,5 +22,5 @@ test('YAML diff test', () => {
   const filepath2 = getPath(__dirname, '../__fixtures__', 'recursive2.yaml');
 
   expect(genDiff(filepath1, filepath2)).toEqual(stylishExpected);
-  expect(gendiff(filepath1, filepath2, 'plain')).toEqual(plainExpected);
+  expect(genDiff(filepath1, filepath2, 'plain')).toEqual(plainExpected);
 });

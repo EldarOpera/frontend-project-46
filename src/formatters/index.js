@@ -1,8 +1,8 @@
 import formatStylish from './stylish.js';
-import formatPlain from './plain.js'
+import formatPlain from './plain.js';
 
 const format = (diffTree, formatName) => {
-  switch (format) {
+  switch (formatName) {
     case 'stylish':
       return formatStylish(diffTree);
     case 'plain':
@@ -12,4 +12,4 @@ const format = (diffTree, formatName) => {
   }
 };
 
-export default makeFormat;
+export default format;
