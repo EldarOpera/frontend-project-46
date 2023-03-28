@@ -17,7 +17,7 @@ const formatJson = (diffTree) => {
   const iter = (data) => {
     const lines = data.map((node) => {
       const {
-        key, type, value, oldValue, newValue, children
+        key, type, value, oldValue, newValue, children,
       } = node;
       const generalCase = `{"key":"${key}","type":"${type}","value":${normalize(value)}}`;
 

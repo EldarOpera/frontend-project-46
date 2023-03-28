@@ -1,5 +1,4 @@
 import { test, expect } from '@jest/globals';
-import { json } from 'stream/consumers';
 import { fileURLToPath } from 'url';
 import { getPath, getDir, readFile } from '../src/helpers.js';
 import genDiff from '../src/index.js';
