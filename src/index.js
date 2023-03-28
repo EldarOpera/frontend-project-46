@@ -1,3 +1,4 @@
+import path from 'path';
 import parse from './parsers.js';
 import buildASTtree from './buildASTtree.js';
 import format from './formatters/index.js';
