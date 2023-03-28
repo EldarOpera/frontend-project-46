@@ -3,17 +3,17 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/b51ca25eb96cef345f58/maintainability)](https://codeclimate.com/github/EldarOpera/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b51ca25eb96cef345f58/test_coverage)](https://codeclimate.com/github/EldarOpera/frontend-project-46/test_coverage)
 
-## Difference Calculator
+# Difference Calculator
 The package contains a command line utility that calculates and displays the difference between two files.
 Supported formats: **json**, **yaml**.
 
-### Installation:
+## Installation:
 
 ```
 - git clone git@github.com:EldarOpera/frontend-project-46.git
 - make install
 ```
 
-### Asciinema of the package
+## Asciinema of the package
 
 [![asciicast](https://asciinema.org/a/RvyaXkUtRxtVVRy0CepUjpAJU.svg)](https://asciinema.org/a/RvyaXkUtRxtVVRy0CepUjpAJU)
