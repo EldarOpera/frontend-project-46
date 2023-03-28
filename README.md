@@ -14,6 +14,6 @@ Supported formats: **json**, **yaml**.
 - make install (from 'gendiff' directory)
 ```
 
-## Asciinema of the package
+## Asciinema of the package:
 
 [![asciicast](https://asciinema.org/a/RvyaXkUtRxtVVRy0CepUjpAJU.svg)](https://asciinema.org/a/RvyaXkUtRxtVVRy0CepUjpAJU)
