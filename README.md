@@ -11,7 +11,7 @@ Supported formats: **json**, **yaml**.
 
 ```
 - git clone git@github.com:EldarOpera/frontend-project-46.git gendiff
-- make install // from 'gendiff' directory
+- make install (from 'gendiff' directory)
 ```
 
 ## Asciinema of the package
