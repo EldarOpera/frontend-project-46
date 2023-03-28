@@ -10,6 +10,7 @@ Supported formats: **json**, **yaml**.
 ### Installation:
 
 > git clone git@github.com:EldarOpera/frontend-project-46.git
+>
 > make install
 
 ### Asciinema of the package
