@@ -9,7 +9,7 @@ const __dirname = getDir(__filename);
 
 const stylishExpected = readFile(path.resolve(__dirname, '../__fixtures__', 'stylish_expected.txt'));
 const plainExpected = readFile(path.resolve(__dirname, '../__fixtures__', 'plain_expected.txt'));
-//const jsonExpected = readFile(path.resolve(__dirname, '../__fixtures__', 'json_expected.txt'));
+// const jsonExpected = readFile(path.resolve(__dirname, '../__fixtures__', 'json_expected.txt'));
 
 test('JSON diff test', () => {
   const filepath1 = path.resolve(__dirname, '../__fixtures__', 'recursive1.json');
@@ -17,7 +17,7 @@ test('JSON diff test', () => {
 
   expect(genDiff(filepath1, filepath2)).toEqual(stylishExpected);
   expect(genDiff(filepath1, filepath2, 'plain')).toEqual(plainExpected);
-  //expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonExpected);
+  // expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonExpected);
 });
 
 test('YAML diff test', () => {
@@ -26,5 +26,5 @@ test('YAML diff test', () => {
 
   expect(genDiff(filepath1, filepath2)).toEqual(stylishExpected);
   expect(genDiff(filepath1, filepath2, 'plain')).toEqual(plainExpected);
-  //expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonExpected);
+  // expect(genDiff(filepath1, filepath2, 'json')).toEqual(jsonExpected);
 });

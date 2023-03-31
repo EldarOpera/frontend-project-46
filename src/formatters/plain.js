@@ -11,20 +11,20 @@ const stringify = (value) => {
 const formatPlain = (diffTree) => {
   const iter = (data, path) => {
     const lines = data.flatMap((node) => {
+      const { key } = node;
 
       switch (type) {
         case 'nested':
-          const { key, children } = node;
+          const { children } = node;
           return iter(children, `${path}${key}.`);
+        case 'changed':
+          const { value1, value2 } = node;
+          return `Property '${path}${key}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
         case 'added':
-          const { key, value } = node;
+          const { value } = node;
           return `Property '${path}${key}' was added with value: ${stringify(value)}`;
         case 'deleted':
-          const { key } = node;
           return `Property '${path}${key}' was removed`;
-        case 'changed':
-          const { key, value1, value2 } = node;
-          return `Property '${path}${key}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
         default:
           return [];
       }

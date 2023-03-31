@@ -29,7 +29,7 @@ const buildASTtree = (obj1, obj2) => {
       return { key, type: 'deleted', value: obj1[key] };
     }
     // ключ остался без изменений
-    return { key, type: 'unchanged', value: value1 };
+    return { key, type: 'unchanged', value: obj1[key] };
   });
 
   return astTree;
