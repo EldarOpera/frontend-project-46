@@ -15,23 +15,16 @@ const formatPlain = (diffTree) => {
   const iter = (data, path) => {
     const lines = data.flatMap((node) => {
       const { key, type } = node;
-      if (type === 'nested') {
-        const { children } = node;
-      } else if (type === 'changed') {
-        const { value1, value2 } = node;
-      } else {
-        const { value } = node;
-      }
-      
+
       path.push(key);
 
       switch (type) {
         case 'nested':
-          return iter(children, path);
+          return iter(node.children, path);
         case 'changed':
-          return `Property '${path.join('.')}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
+          return `Property '${path.join('.')}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
         case 'added':
-          return `Property '${path.join('.')}' was added with value: ${stringify(value)}`;
+          return `Property '${path.join('.')}' was added with value: ${stringify(node.value)}`;
         case 'deleted':
           return `Property '${path.join('.')}' was removed`;
         case 'unchanged':
