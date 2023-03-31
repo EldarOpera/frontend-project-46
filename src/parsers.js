@@ -1,9 +1,8 @@
 import yaml from 'js-yaml';
-import { readFile, getExtension } from './helpers.js';
+import { getExtension } from './helpers.js';
 
-const parse = (filepath) => {
-  const extension = getExtension(filepath);
-  const data = readFile(filepath);
+const parse = (path, data) => {
+  const extension = getExtension(path);
 
   switch (extension) {
     case '.json':

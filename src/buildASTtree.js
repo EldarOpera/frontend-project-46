@@ -6,27 +6,29 @@ const buildASTtree = (obj1, obj2) => {
   const sortedKeys = _.sortBy(_.union(keys1, keys2));
 
   const astTree = sortedKeys.map((key) => {
-    const value1 = obj1[key];
-    const value2 = obj2[key];
-    // если оба значения - объекты
-    if (_.isObject(value1) && _.isObject(value2)) {
-      return { key, type: 'nested', children: buildASTtree(value1, value2) };
+    // ключи присутствуют в обоих файлах
+    if (_.has(obj1, key) && _.has(obj2, key)) {
+      // оба значения - объекты
+      if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
+        return { key, type: 'nested', children: buildASTtree(obj1[key], obj2[key]) };
+      }
+      // значения - разные
+      if (obj1[key] !== obj2[key]) {
+        return {
+          key, type: 'changed', value1: obj1[key], value2: obj2[key],
+        };
+      }
     }
-    // если ключ добавился
+    // ключ присутствует в одном из файлов
+    // только во втором (добавился)
     if (!_.has(obj1, key)) {
-      return { key, type: 'added', value: value2 };
+      return { key, type: 'added', value: obj2[key] };
     }
-    // если ключ удалился
+    // только в первом (удалился)
     if (!_.has(obj2, key)) {
-      return { key, type: 'deleted', value: value1 };
+      return { key, type: 'deleted', value: obj1[key] };
     }
-    // если значение изменилось
-    if (value1 !== value2) {
-      return {
-        key, type: 'changed', oldValue: value1, newValue: value2,
-      };
-    }
-
+    // ключ остался без изменений
     return { key, type: 'unchanged', value: value1 };
   });
 
