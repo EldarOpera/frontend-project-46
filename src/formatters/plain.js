@@ -18,7 +18,8 @@ const formatPlain = (diffTree) => {
 
       switch (type) {
         case 'nested':
-          return iter(node.children, path.push(key));
+          path.push(key);
+          return iter(node.children, path);
         case 'changed':
           return `Property '${path.join('.')}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
         case 'added':
