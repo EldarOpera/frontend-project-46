@@ -11,7 +11,7 @@ const stringify = (value) => {
 const formatPlain = (diffTree) => {
   const iter = (data, path) => {
     const lines = data.flatMap((node) => {
-      const { key } = node;
+      const { key, type } = node;
 
       switch (type) {
         case 'nested':
