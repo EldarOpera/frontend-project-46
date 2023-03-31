@@ -35,7 +35,7 @@ const formatStylish = (diffTree) => {
         case 'unchanged':
           return `${getIndent(depth)}  ${key}: ${stringify(value, depth + 1)}`;
         default:
-          throw new Error(`Unknown node type: ${type}.`);
+          throw new Error(`Unknown node type: '${type}'`);
       }
     });
 
