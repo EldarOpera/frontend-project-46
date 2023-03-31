@@ -4,8 +4,11 @@ const stringify = (value) => {
   if (_.isObject(value)) {
     return '[complex value]';
   }
+  if (typeof (value) === 'string') {
+    return `'${value}'`;
+  }
 
-  return String(value);
+  return value;
 };
 
 const formatPlain = (diffTree) => {
