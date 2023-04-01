@@ -19,21 +19,19 @@ const stringify = (data, depth) => {
 const formatStylish = (diffTree) => {
   const iter = (data, depth) => {
     const lines = data.map((node) => {
-      const {
-        key, type, value, value1, value2, children,
-      } = node;
+      const { key, type } = node;
 
       switch (type) {
         case 'nested':
-          return `${getIndent(depth)}  ${key}: ${iter(children, depth + 1)}`;
+          return `${getIndent(depth)}  ${key}: ${iter(node.children, depth + 1)}`;
         case 'added':
-          return `${getIndent(depth)}+ ${key}: ${stringify(value, depth + 1)}`;
+          return `${getIndent(depth)}+ ${key}: ${stringify(node.value, depth + 1)}`;
         case 'deleted':
-          return `${getIndent(depth)}- ${key}: ${stringify(value, depth + 1)}`;
+          return `${getIndent(depth)}- ${key}: ${stringify(node.value, depth + 1)}`;
         case 'changed':
-          return `${getIndent(depth)}- ${key}: ${stringify(value1, depth + 1)}\n${getIndent(depth)}+ ${key}: ${stringify(value2, depth + 1)}`;
+          return `${getIndent(depth)}- ${key}: ${stringify(node.value1, depth + 1)}\n${getIndent(depth)}+ ${key}: ${stringify(node.value2, depth + 1)}`;
         case 'unchanged':
-          return `${getIndent(depth)}  ${key}: ${stringify(value, depth + 1)}`;
+          return `${getIndent(depth)}  ${key}: ${stringify(node.value, depth + 1)}`;
         default:
           throw new Error(`Unknown node type: '${type}'`);
       }
