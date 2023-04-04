@@ -1,19 +1,18 @@
 import yaml from 'js-yaml';
-import { getExtension } from './helpers.js';
+import path from 'path';
 
-const parse = (path, data) => {
-  const extension = getExtension(path);
+const parsers = {
+  json: JSON.parse,
+  yaml: yaml.load,
+  yml: yaml.load,
+};
 
-  switch (extension) {
-    case '.json':
-      return JSON.parse(data);
-    case '.yml':
-      return yaml.load(data);
-    case '.yaml':
-      return yaml.load(data);
-    default:
-      throw new Error(`Unknown extension: ${extension}`);
+const parse = (data, format) => {
+  if (!Object.hasOwn(parsers, format)) {
+    throw new Error(`Unknown parser format: ${format}`);
   }
+
+  return parsers[format](data);
 };
 
 export default parse;

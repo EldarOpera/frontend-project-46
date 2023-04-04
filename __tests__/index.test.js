@@ -1,40 +1,42 @@
 import { test, expect, describe } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import { getDir, readFile } from '../src/helpers.js';
+import { readFileSync } from 'fs';
 import genDiff from '../index.js';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = getDir(__filename);
+const __dirname = path.dirname(__filename);
 
-const paths = [
-  path.resolve(__dirname, '../__fixtures__', 'recursive1.json'),
-  path.resolve(__dirname, '../__fixtures__', 'recursive2.json'),
-  path.resolve(__dirname, '../__fixtures__', 'recursive1.yaml'),
-  path.resolve(__dirname, '../__fixtures__', 'recursive2.yaml'),
-  path.resolve(__dirname, '../__fixtures__', 'stylish_expected.txt'),
-  path.resolve(__dirname, '../__fixtures__', 'plain_expected.txt'),
-];
+const getFixturePath = (filename) => path.join(__dirname, '../__fixtures__', filename);
 
-const stylishResultJson = genDiff(paths[0], paths[1]);
-const stylishResultYaml = genDiff(paths[2], paths[3]);
-const plainResultJson = genDiff(paths[0], paths[1], 'plain');
-const plainResultYaml = genDiff(paths[2], paths[3], 'plain');
+const paths = {
+  json1: getFixturePath('recursive1.json'),
+  json2: getFixturePath('recursive2.json'),
+  yaml1: getFixturePath('recursive1.yaml'),
+  yaml2: getFixturePath('recursive2.yaml'),
+  stylishExpected: getFixturePath('stylish_expected.txt'),
+  plainExpected: getFixturePath('plain_expected.txt'),
+};
 
-const stylishExpected = readFile(paths[4]);
-const plainExpected = readFile(paths[5]);
+const stylishExpected = readFileSync(paths.stylishExpected, 'utf-8');
+const plainExpected = readFileSync(paths.plainExpected, 'utf-8');
 
 describe('gendiff test', () => {
   test.each([
-    [stylishResultJson, stylishResultYaml, stylishExpected],
-    [plainResultJson, plainResultYaml, plainExpected],
-  ])('stylish && plain formats', (result1, result2, expected) => {
-    expect(result1).toEqual(expected);
-    expect(result2).toEqual(expected);
+    [genDiff(paths.json1, paths.json2), stylishExpected],
+    [genDiff(paths.json1, paths.json2, 'stylish'), stylishExpected],
+    [genDiff(paths.json1, paths.json2, 'plain'), plainExpected],
+    [genDiff(paths.yaml1, paths.yaml2), stylishExpected],
+    [genDiff(paths.yaml1, paths.yaml2, 'stylish'), stylishExpected],
+    [genDiff(paths.yaml1, paths.yaml2, 'plain'), plainExpected],
+  ])('stylish && plain formats', (result, expected) => {
+    expect(result).toEqual(expected);
   });
 
-  test('json format', () => {
-    const data = genDiff(paths[0], paths[1], 'json');
-    expect(() => JSON.parse(data)).not.toThrow();
+  test.each([
+    genDiff(paths.json1, paths.json2, 'json'),
+    gendiff(paths.yaml1, paths.yaml2, 'json'),
+  ])('json format', (result) => {
+    expect(() => JSON.parse(result)).not.toThrow();
   });
 });
