@@ -35,7 +35,7 @@ describe('gendiff test', () => {
 
   test.each([
     genDiff(paths.json1, paths.json2, 'json'),
-    gendiff(paths.yaml1, paths.yaml2, 'json'),
+    genDiff(paths.yaml1, paths.yaml2, 'json'),
   ])('json format', (result) => {
     expect(() => JSON.parse(result)).not.toThrow();
   });
