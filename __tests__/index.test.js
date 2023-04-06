@@ -19,6 +19,6 @@ describe('gendiff test', () => {
     expect(genDiff(filepath1, filepath2)).toEqual(stylishExpected);
     expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(stylishExpected);
     expect(genDiff(filepath1, filepath2, 'plain')).toEqual(plainExpected);
-    expect(JSON.parse(genDiff(filepath1, filepath2, 'json'))).not.toThrow();
+    expect(() => JSON.parse(genDiff(filepath1, filepath2, 'json'))).not.toThrow();
   });
 });
