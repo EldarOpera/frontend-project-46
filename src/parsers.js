@@ -7,7 +7,7 @@ const parsers = {
 };
 
 const parse = (data, format) => {
-  switch(Object.hasOwn(parsers, format)) {
+  switch (Object.hasOwn(parsers, format)) {
     case true:
       return parsers[format](data);
     default:

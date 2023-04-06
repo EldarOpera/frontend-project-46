@@ -13,7 +13,7 @@ const stylishExpected = readFileSync(getFixturePath('stylish_expected.txt'), 'ut
 const plainExpected = readFileSync(getFixturePath('plain_expected.txt'), 'utf-8');
 
 describe('gendiff test', () => {
-  test.each(['json', 'yaml',])('stylish, plain, json formats', (format) => {
+  test.each(['json', 'yaml'])('stylish, plain, json formats', (format) => {
     const filepath1 = getFixturePath(`recursive1.${format}`);
     const filepath2 = getFixturePath(`recursive2.${format}`);
     expect(genDiff(filepath1, filepath2)).toEqual(stylishExpected);
