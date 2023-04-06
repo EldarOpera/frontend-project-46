@@ -7,11 +7,12 @@ const parsers = {
 };
 
 const parse = (data, format) => {
-  if (!Object.hasOwn(parsers, format)) {
-    throw new Error(`Unknown parser format: ${format}`);
+  switch(Object.hasOwn(parsers, format)) {
+    case true:
+      return parsers[format](data);
+    default:
+      throw new Error(`Unknown parser format: ${format}`);
   }
-
-  return parsers[format](data);
 };
 
 export default parse;
